@@ -1,1 +1,0 @@
-# spacelift-manager
