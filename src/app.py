@@ -1,8 +1,8 @@
 import random
 from fastapi import FastAPI
 
-from src.dto.apply import ApplyRequest
-from src.spacelift.spacelift_service import SpaceliftService
+from dto.apply import ApplyRequest
+from spacelift.spacelift_service import SpaceliftService
 
 app = FastAPI(title="Spacelift Service", version="0.1.0")
 service = SpaceliftService()

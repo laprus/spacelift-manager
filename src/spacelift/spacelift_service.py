@@ -1,6 +1,6 @@
 import logging
 import uuid
-from src.dto.apply import ApplyResult
+from dto.apply import ApplyResult
 
 logger = logging.getLogger(__name__)
 

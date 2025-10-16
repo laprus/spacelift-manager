@@ -15,6 +15,8 @@ RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted
 
 # Copy application code
 COPY app.py .
+COPY spacelift/ ./spacelift/
+COPY dto/ ./dto/
 
 # Expose the port
 EXPOSE 8000
