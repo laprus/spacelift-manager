@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/laprus/spacelift-manager/spacelift-manager
+  tag: 0.1.3
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  imagePullSecret: ghcr-secret
 
 imagePullSecrets: []
 nameOverride: ""
