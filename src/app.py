@@ -1,4 +1,5 @@
 import random
+import logging
 from fastapi import FastAPI
 
 from dto.apply import ApplyRequest
@@ -7,6 +8,8 @@ from spacelift.spacelift_service import SpaceliftService
 app = FastAPI(title="Spacelift Service", version="0.1.0")
 service = SpaceliftService()
 
+logger = logging.getLogger(__name__)
+
 @app.get("/healthy")
 def healthy():
     """Health check endpoint"""
@@ -14,6 +17,7 @@ def healthy():
 
 @app.post("/apply")
 async def apply(dto: ApplyRequest):
+    logging.debug("Received apply request: %s", dto)
     result = await service.run_apply(dto.stack_id, dto.commit_sha)
     return result
 
