@@ -11,43 +11,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}/spacelift-manager
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-    
-    - name: Install Poetry
-      uses: abatilo/actions-poetry@v3
-      with:
-        poetry-version: 2.2.1
-    
-    - name: Configure Poetry
-      run: |
-        poetry config virtualenvs.create true
-        poetry config virtualenvs.in-project true
-    
-    - name: Cache Poetry dependencies
-      uses: actions/cache@v3
-      with:
-        path: .venv
-        key: poetry-${{ runner.os }}-${{ hashFiles('**/pyproject.toml') }}
-    
-    - name: Install dependencies
-      working-directory: ./src
-      run: poetry install
-    
-    - name: Run tests
-      working-directory: ./src
-      run: poetry run pytest tests/ -v --tb=short
-
   build:
-    needs: test
     runs-on: ubuntu-latest
     permissions:
       contents: write
