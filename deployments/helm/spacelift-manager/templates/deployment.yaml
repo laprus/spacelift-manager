@@ -20,10 +20,8 @@ spec:
       labels:
         {{- include "spacelift-manager.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      - name: {{ .Values.imagePullSecret | default "ghcr-secret" }}
       serviceAccountName: {{ include "spacelift-manager.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
