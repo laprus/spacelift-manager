@@ -3,8 +3,8 @@ POST {{api_url}}/apply
 Content-Type: application/json
 
 {  
-  "stack_id": "my-stack",
-  "commit_sha": "abc123"
+  "stack_id": "cin-devops-sandbox-us-east-1",
+  "commit_sha": "0f426c4aed6bf9f1a55851e8eceb653ae286ef31"
 }
 
 ### Health Check

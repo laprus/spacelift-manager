@@ -80,3 +80,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+spacelift:
+  # Name of an existing secret containing the API credentials
+  # The secret must have keys: SPACELIFT_API_KEY_ID, SPACELIFT_API_KEY_SECRET
+  existingSecretName: "spacelift-api-key"

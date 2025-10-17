@@ -3,7 +3,10 @@ import logging
 from fastapi import FastAPI
 
 from dto.apply import ApplyRequest
-from spacelift.spacelift_service import SpaceliftService
+from spacelift.client import SpaceliftAuth, SpaceliftClient
+from spacelift.service import SpaceliftService
+import os
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -11,7 +14,9 @@ logging.basicConfig(
 )
 
 app = FastAPI(title="Spacelift Service", version="0.1.0")
-service = SpaceliftService()
+api_key_id = os.getenv("SPACELIFT_API_KEY_ID", "")
+api_key_secret = os.getenv("SPACELIFT_API_KEY_SECRET", "")
+service = SpaceliftService(SpaceliftClient(SpaceliftAuth(api_key_id=api_key_id, api_key_secret=api_key_secret)))
 
 logger = logging.getLogger(__name__)
 

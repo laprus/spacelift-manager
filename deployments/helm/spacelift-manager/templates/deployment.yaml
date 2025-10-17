@@ -47,6 +47,17 @@ spec:
               port: http
             initialDelaySeconds: 10
             periodSeconds: 5
+          env:
+            - name: SPACELIFT_API_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.spacelift.existingSecretName }}
+                  key: SPACELIFT_API_KEY_ID
+            - name: SPACELIFT_API_KEY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.spacelift.existingSecretName }}
+                  key: SPACELIFT_API_KEY_SECRET
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
