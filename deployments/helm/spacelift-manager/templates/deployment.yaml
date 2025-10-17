@@ -39,14 +39,14 @@ spec:
             httpGet:
               path: /healthy
               port: http
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            initialDelaySeconds: 30
+            periodSeconds: 300
           readinessProbe:
             httpGet:
               path: /healthy
               port: http
-            initialDelaySeconds: 10
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 300
           env:
             - name: SPACELIFT_API_KEY_ID
               valueFrom:
