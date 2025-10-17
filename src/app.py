@@ -5,6 +5,11 @@ from fastapi import FastAPI
 from dto.apply import ApplyRequest
 from spacelift.spacelift_service import SpaceliftService
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
 app = FastAPI(title="Spacelift Service", version="0.1.0")
 service = SpaceliftService()
 
@@ -17,7 +22,7 @@ def healthy():
 
 @app.post("/apply")
 async def apply(dto: ApplyRequest):
-    logging.debug("Received apply request: %s", dto)
+    logging.info("Received apply request: %s", dto)
     result = await service.run_apply(dto.stack_id, dto.commit_sha)
     return result
 

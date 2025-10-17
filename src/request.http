@@ -1,0 +1,13 @@
+### Apply
+POST {{api_url}}/apply
+Content-Type: application/json
+
+{  
+  "stack_id": "my-stack",
+  "commit_sha": "abc123"
+}
+
+### Health Check
+GET {{api_url}}/healthy
+Content-Type: application/json
+
