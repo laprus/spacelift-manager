@@ -11,7 +11,9 @@ RUN apt-get update && apt-get install -y \
 # Install FastAPI and Uvicorn directly (matching pyproject.toml versions)
 RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --no-cache-dir \
     "fastapi>=0.119.0,<0.120.0" \
-    "uvicorn[standard]>=0.37.0,<0.38.0"
+    "uvicorn[standard]>=0.37.0,<0.38.0" \
+    "httpx>=0.24.0" \
+    "pydantic>=2.0.0"
 
 # Copy application code
 COPY app.py .
